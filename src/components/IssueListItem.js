@@ -19,6 +19,7 @@ class IssueListItem extends Component {
             {issue.title}
           </div>
           <div styleName="row-2">{issue.status}</div>
+          <div styleName="row">{issue.commentCount}</div>
           <div styleName="row">
             {
               issue.assignee.id ? (issue.assignee.name) : ("-")
