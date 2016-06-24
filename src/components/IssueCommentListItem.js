@@ -16,18 +16,27 @@ class IssueCommentListItem extends Component {
 
   onClickEdit() {
     // TODO: implement
+    this.setState({isEditing:!this.state.isEditing})
   }
 
   onClickCancel() {
     // TODO: implement
+    this.setState({isEditing:false})
   }
 
   onClickSave() {
     // TODO: implement
+    this.setState({isEditing:false})
+    // textareaのvalueをそのまま入力
+    const newComment = this.props.comment.set('content', this.state.editingContent )
+    console.log(newComment)
+    this.props.onClickSave(newComment)
   }
 
   onClickDelete() {
     // TODO: implement
+    console.log("onClickDelete")
+    this.props.onClickDelete(this.props.comment)
   }
 
   onChangeContent(e) {

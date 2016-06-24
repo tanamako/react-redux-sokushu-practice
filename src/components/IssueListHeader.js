@@ -25,10 +25,27 @@ class IssueListHeader extends Component {
 
   onChangeAssigneeFilter(user) {
     // TODO: implement
+    // userの名前を取得
+
+    console.log(user)
+
+    if (this.isAssigneeFilter(user)) {
+      this.props.onChangeAssigneeFilter(null)
+    } else {
+      this.props.onChangeAssigneeFilter(user)
+      this.onChangeAssigneeModal(false)
+    }
+
   }
 
   onChangeLabelFilter(label) {
     // TODO: implement
+    if(this.isLabelFilter(label)){
+      this.props.onChangeLabelFilter(null)
+    }else{
+      this.props.onChangeLabelFilter(label) 
+      this.onChangeLabelModal(false)     
+    }
   }
 
   onChangeAssigneeModal(show) {

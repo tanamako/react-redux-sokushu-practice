@@ -40,7 +40,7 @@ class IssueCommentForm extends Component {
       <div styleName="base">
         <div styleName="header">
           <span styleName="input-label">
-            User Name
+            ユーザーネーム
           </span>
           <span styleName="user-input">
             <input
@@ -53,7 +53,7 @@ class IssueCommentForm extends Component {
         </div>
         <div styleName="main">
           <div styleName="input-label">
-            Comment Here
+            コメント
           </div>
           <textarea
             styleName="comment-text"
@@ -80,7 +80,7 @@ class IssueCommentForm extends Component {
             styleName="comment-button"
             onClick={this.onClickComment.bind(this)}
           >
-            Comment
+            コメント
           </div>
         </div>
       </div>

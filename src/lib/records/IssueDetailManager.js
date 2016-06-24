@@ -8,4 +8,10 @@ const _IssueDetailManager = Record({
 })
 
 export default class IssueDetailManager extends _IssueDetailManager {
+  isValidTitle() {
+    return this.title.length > 0
+  }
+  isValidContent() {
+    return this.content.length > 0
+  }
 }

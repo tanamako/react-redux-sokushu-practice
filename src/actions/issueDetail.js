@@ -83,8 +83,13 @@ async function putCommentRequest(issue, comment) {
 }
 
 async function deleteCommentRequest(issue, comment) {
-  // TODO: implement
+  await $.ajax({
+    url: `${END_POINTS.ISSUES}/${issue.id}/comments/${comment.id}`,
+    method: 'DELETE',
+    timeout: 100000,
+  })
 }
+
 
 function setIssueDetail(issueDetail) {
   return {
@@ -136,6 +141,7 @@ export function addComment(issueDetail, comment) {
       dispatch(setComments(prevComments.push(newComment)))
     } catch (error) {
       console.log("error", error)
+      console.log(error.responseText)
       dispatch(setComments(prevComments)) // fallback to previous state
     }
   }
@@ -164,8 +170,22 @@ export function updateComment(issueDetail, comment) {
 }
 
 export function deleteComment(issueDetail, comment) {
+  // console.log(comment) // なぜcomment.idが取得できないのか
   return async(dispatch) => {
     // TODO: implement
+    const prevComments = issueDetail.comments
+    const nextComments = prevComments.delete(
+      prevComments.findIndex((target) => {
+        return target.id === comment.id
+      })
+    )
+    dispatch(setComments(nextComments))
+    try{
+      await deleteCommentRequest(issueDetail,comment)
+    } catch(error){
+      console.log("error",error)
+      dispatch(setComments(prevComments)) //一旦戻す
+    }
   }
 }
 

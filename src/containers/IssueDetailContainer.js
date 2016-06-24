@@ -32,12 +32,18 @@ class IssueDetailContainer extends Component {
   }
 
   onClickCommentSave(comment) {
-    // TODO: implement update
-    this.props.addComment(this.props.issueDetail, comment)
+    console.log(comment)
+    // 編集の保存と新規の分岐
+    if(comment.id){
+      this.props.updateComment(this.props.issueDetail, comment)
+    }else{
+      this.props.addComment(this.props.issueDetail, comment)
+    }
   }
 
   onClickCommentDelete(comment) {
-    // TODO: implement
+    console.log(comment)
+    this.props.deleteComment(this.props.issueDetail, comment)
   }
 
   onClickTitleEdit() {
@@ -45,11 +51,13 @@ class IssueDetailContainer extends Component {
   }
 
   onClickTitleSave(issue) {
+    // console.log(issue)
     this.props.changeTitleEditing(false)
     this.props.updateIssue(issue)
   }
 
   onClickChangeStatus(issue) {
+    // console.log(issue)
     this.props.updateIssue(issue)
   }
 
